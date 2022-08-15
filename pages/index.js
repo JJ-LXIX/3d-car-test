@@ -19,6 +19,7 @@ import {
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import FloatingGrid from "../Components/FloatingGrid";
+import Loading from "../Components/Loading";
 
 const CarShow = () => {
   return (
@@ -98,7 +99,7 @@ export default function Home() {
       </Head>
 
       <>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loading />}>
           <Canvas shadows>
             <CarShow />
           </Canvas>
