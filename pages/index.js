@@ -11,6 +11,14 @@ import {
 import Ground from "../Components/Ground";
 import Car from "../Components/Car";
 import Rings from "../Components/Rings";
+import Boxes from "../Components/Boxes";
+import {
+  Bloom,
+  ChromaticAberration,
+  EffectComposer,
+} from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
+import FloatingGrid from "../Components/FloatingGrid";
 
 const CarShow = () => {
   return (
@@ -31,6 +39,12 @@ const CarShow = () => {
 
       {/* Rings Component */}
       <Rings />
+
+      {/* Box Component */}
+      <Boxes />
+
+      {/*FloatingGrid Component */}
+      <FloatingGrid />
 
       <spotLight
         color={[1, 0.25, 0.7]}
@@ -53,6 +67,23 @@ const CarShow = () => {
 
       {/* Ground Component */}
       <Ground />
+
+      {/* Effect Composer */}
+      <EffectComposer>
+        <Bloom
+          blendFunction={BlendFunction.ADD}
+          intensity={0.5}
+          width={300}
+          height={300}
+          kernelSize={5}
+          luminanceThreshold={0.15}
+          luminanceSmoothing={0.025}
+        />
+        <ChromaticAberration
+          blendFunction={BlendFunction.NORMAL}
+          offset={[0.0005, 0.0012]}
+        />
+      </EffectComposer>
     </>
   );
 };
